@@ -1,0 +1,161 @@
+import { Appointment } from '@/types';
+import { mockProperties } from './properties';
+import { mockAdvisor } from './advisor';
+
+const now = new Date();
+const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+const tomorrow = new Date(today.getTime() + 86400000);
+const nextWeek = new Date(today.getTime() + 7 * 86400000);
+
+function makeDate(base: Date, hour: number, minute = 0) {
+  const d = new Date(base);
+  d.setHours(hour, minute, 0, 0);
+  return d;
+}
+
+export const mockAppointments: Appointment[] = [
+  {
+    id: 'appt-1',
+    propertyId: 'prop-1',
+    property: mockProperties[0],
+    advisorId: 'advisor-1',
+    advisor: mockAdvisor,
+    clientName: 'Valentina Salazar',
+    clientPhone: '+57 318 234 5678',
+    date: makeDate(today, 10, 0),
+    type: 'VISIT',
+    status: 'CONFIRMED',
+    notes: 'Primera visita, interesada en arrendar',
+    createdAt: new Date(today.getTime() - 2 * 86400000),
+  },
+  {
+    id: 'appt-2',
+    propertyId: 'prop-5',
+    property: mockProperties[4],
+    advisorId: 'advisor-1',
+    advisor: mockAdvisor,
+    clientName: 'Ricardo Morales',
+    clientPhone: '+57 311 876 5432',
+    date: makeDate(today, 14, 30),
+    type: 'VISIT',
+    status: 'PENDING',
+    notes: 'Tiene local en arriendo actualmente',
+    createdAt: new Date(today.getTime() - 1 * 86400000),
+  },
+  {
+    id: 'appt-3',
+    propertyId: 'prop-4',
+    property: mockProperties[3],
+    advisorId: 'advisor-1',
+    advisor: mockAdvisor,
+    clientName: 'Juan Pablo Montoya',
+    clientPhone: '+57 317 012 3456',
+    date: makeDate(today, 16, 0),
+    type: 'SIGNING',
+    status: 'CONFIRMED',
+    notes: 'Firma de promesa de compraventa',
+    createdAt: new Date(today.getTime() - 3 * 86400000),
+  },
+  {
+    id: 'appt-4',
+    propertyId: 'prop-2',
+    property: mockProperties[1],
+    advisorId: 'advisor-1',
+    advisor: mockAdvisor,
+    clientName: 'Sandra Patricia Ríos',
+    clientPhone: '+57 314 321 0987',
+    date: makeDate(tomorrow, 9, 0),
+    type: 'VISIT',
+    status: 'CONFIRMED',
+    notes: 'Familia interesada en compra',
+    createdAt: new Date(today.getTime() - 1 * 86400000),
+  },
+  {
+    id: 'appt-5',
+    propertyId: 'prop-6',
+    property: mockProperties[5],
+    advisorId: 'advisor-1',
+    advisor: mockAdvisor,
+    clientName: 'Mauricio Henao',
+    clientPhone: '+57 313 654 3210',
+    date: makeDate(tomorrow, 11, 0),
+    type: 'VISIT',
+    status: 'PENDING',
+    notes: 'Inversionista, busca propiedades de lujo',
+    createdAt: new Date(today.getTime()),
+  },
+  {
+    id: 'appt-6',
+    propertyId: 'prop-8',
+    property: mockProperties[7],
+    advisorId: 'advisor-1',
+    advisor: mockAdvisor,
+    clientName: 'Valentina Salazar Gómez',
+    clientPhone: '+57 318 234 5678',
+    date: makeDate(tomorrow, 15, 0),
+    type: 'INSPECTION',
+    status: 'CONFIRMED',
+    notes: 'Inspección previa a vencimiento de contrato',
+    createdAt: new Date(today.getTime() - 1 * 86400000),
+  },
+  {
+    id: 'appt-7',
+    propertyId: 'prop-14',
+    property: mockProperties[13],
+    advisorId: 'advisor-1',
+    advisor: mockAdvisor,
+    clientName: 'Camilo Suárez Londoño',
+    clientPhone: '+57 310 567 8901',
+    date: makeDate(nextWeek, 10, 30),
+    type: 'VISIT',
+    status: 'PENDING',
+    notes: 'Ejecutivo extranjero, estadía larga',
+    createdAt: new Date(today.getTime()),
+  },
+  {
+    id: 'appt-8',
+    propertyId: 'prop-1',
+    property: mockProperties[0],
+    advisorId: 'advisor-1',
+    advisor: mockAdvisor,
+    clientName: 'Lorena Castro',
+    clientPhone: '+57 319 789 0123',
+    date: makeDate(nextWeek, 14, 0),
+    type: 'KEY_DELIVERY',
+    status: 'CONFIRMED',
+    notes: 'Entrega de llaves nuevo arrendatario',
+    createdAt: new Date(today.getTime() - 5 * 86400000),
+  },
+  {
+    id: 'appt-9',
+    propertyId: 'prop-10',
+    property: mockProperties[9],
+    advisorId: 'advisor-1',
+    advisor: mockAdvisor,
+    clientName: 'Sergio Alejandro Toro',
+    clientPhone: '+57 323 234 5678',
+    date: makeDate(nextWeek, 16, 30),
+    type: 'SIGNING',
+    status: 'CONFIRMED',
+    notes: 'Renovación contrato oficina',
+    createdAt: new Date(today.getTime() - 2 * 86400000),
+  },
+  {
+    id: 'appt-10',
+    propertyId: 'prop-3',
+    property: mockProperties[2],
+    advisorId: 'advisor-1',
+    advisor: mockAdvisor,
+    clientName: 'Andrés Felipe Restrepo',
+    clientPhone: '+57 315 678 9012',
+    date: makeDate(new Date(today.getTime() - 1 * 86400000), 11, 0),
+    type: 'INSPECTION',
+    status: 'DONE',
+    notes: 'Inspección anual realizada sin novedad',
+    createdAt: new Date(today.getTime() - 5 * 86400000),
+  },
+];
+
+export async function getAppointments(): Promise<Appointment[]> {
+  return mockAppointments;
+}
