@@ -1,6 +1,7 @@
 import { mockProperties } from '@/lib/mock-data/properties';
 import { formatCOP, getPropertyTypeLabel, getOperationLabel, getStatusLabel } from '@/lib/utils';
 import PropertyCard from '@/components/public/PropertyCard';
+import ContactForm from '@/components/public/ContactForm';
 import { PropertyGallery } from './PropertyGallery';
 import { Maximize2, BedDouble, Bath, Car, Building2, MapPin, Phone, Mail } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
@@ -211,39 +212,7 @@ export default async function PropertyDetailPage({ params }: Props) {
             </div>
 
             {/* Contact form */}
-            <div className="bg-white rounded-xl border border-[#E5E0D8] p-5">
-              <h3 className="font-semibold text-[#1A1A1A] mb-4">¿Te interesa esta propiedad?</h3>
-              <form className="space-y-3" onSubmit={(e) => { e.preventDefault(); alert('¡Mensaje enviado! Te contactaremos pronto.'); }}>
-                <input
-                  type="text"
-                  placeholder="Tu nombre"
-                  required
-                  className="w-full px-3 py-2 border border-[#E5E0D8] rounded-lg text-sm focus:outline-none focus:border-[#1B3A5C]"
-                />
-                <input
-                  type="tel"
-                  placeholder="Tu teléfono"
-                  required
-                  className="w-full px-3 py-2 border border-[#E5E0D8] rounded-lg text-sm focus:outline-none focus:border-[#1B3A5C]"
-                />
-                <input
-                  type="email"
-                  placeholder="Tu correo"
-                  className="w-full px-3 py-2 border border-[#E5E0D8] rounded-lg text-sm focus:outline-none focus:border-[#1B3A5C]"
-                />
-                <textarea
-                  placeholder="Mensaje (opcional)"
-                  rows={3}
-                  className="w-full px-3 py-2 border border-[#E5E0D8] rounded-lg text-sm focus:outline-none focus:border-[#1B3A5C] resize-none"
-                />
-                <button
-                  type="submit"
-                  className="w-full py-2.5 bg-[#C8873A] text-white rounded-lg font-medium hover:bg-[#b5762f] transition-colors"
-                >
-                  Solicitar información
-                </button>
-              </form>
-            </div>
+            <ContactForm />
           </div>
         </div>
       </div>
