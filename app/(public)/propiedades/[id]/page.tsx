@@ -6,11 +6,12 @@ import { Maximize2, BedDouble, Bath, Car, Building2, MapPin, Phone, Mail } from 
 import { Badge } from '@/components/ui/badge';
 
 interface Props {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }
 
-export default function PropertyDetailPage({ params }: Props) {
-  const property = mockProperties.find((p) => p.id === params.id);
+export default async function PropertyDetailPage({ params }: Props) {
+  const { id } = await params;
+  const property = mockProperties.find((p) => p.id === id);
 
   if (!property) {
     return (
