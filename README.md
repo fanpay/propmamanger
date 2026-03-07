@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# PropManager — Gestión Inmobiliaria Medellín
 
-## Getting Started
+Aplicación web para gestión de propiedades en arriendo y venta en Medellín, Colombia.
 
-First, run the development server:
+## Fase 1 — UI con Datos Mock
+
+Esta fase implementa el esqueleto visual completo con datos ficticios para validación con el cliente. Todo funciona en el navegador sin base de datos ni autenticación real.
+
+## Inicio rápido
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abrir [http://localhost:3000](http://localhost:3000) en el navegador.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Estructura del proyecto
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+app/
+  (public)/          # Portal público (sin auth)
+  (dashboard)/       # Panel asesor (auth mock)
+  login/             # Pantalla de acceso
+components/
+  public/            # Componentes del portal
+  dashboard/         # Componentes del panel
+  ui/                # Componentes base
+lib/
+  mock-data/         # Datos ficticios (15 propiedades, contratos, citas)
+  utils.ts           # Helpers (formatCOP, formatDate, etc.)
+types/
+  index.ts           # Tipos TypeScript
+```
 
-## Learn More
+## Rutas disponibles
 
-To learn more about Next.js, take a look at the following resources:
+| Ruta | Descripción |
+|------|-------------|
+| `/` | Landing page con buscador y propiedades destacadas |
+| `/propiedades` | Listado con filtros |
+| `/propiedades/[id]` | Detalle de propiedad |
+| `/contacto` | Formulario de contacto |
+| `/login` | Pantalla de acceso (demo) |
+| `/dashboard` | Panel del asesor |
+| `/dashboard/propiedades` | Mis propiedades |
+| `/dashboard/propiedades/nueva` | Formulario multi-paso (5 pasos) |
+| `/dashboard/contratos` | Gestión de contratos |
+| `/dashboard/clientes` | Gestión de clientes |
+| `/dashboard/agenda` | Calendario semanal |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Stack tecnológico
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Next.js 14** con App Router
+- **TypeScript**
+- **Tailwind CSS**
+- **Lucide React** (iconos)
+- **React Hook Form** (formularios)
+- **Zustand** (estado global)
+- **TanStack Table** (tablas)
 
-## Deploy on Vercel
+## Comandos
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run dev      # Servidor de desarrollo
+npm run build    # Build de producción
+npm run lint     # Linting
+```
