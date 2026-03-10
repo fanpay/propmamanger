@@ -1,6 +1,7 @@
 import { getProperties } from '@/lib/mock-data';
 import PropertyCard from '@/components/public/PropertyCard';
 import SearchBar from '@/components/public/SearchBar';
+import CaptacionBanner from '@/components/public/CaptacionBanner';
 import { Building2, Shield, Clock, Heart } from 'lucide-react';
 
 export default async function HomePage() {
@@ -204,6 +205,9 @@ export default async function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* Captacion Banner CTA */}
+      <CaptacionBanner />
     </>
   );
 }

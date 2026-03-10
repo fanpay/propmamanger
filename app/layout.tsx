@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Outfit, DM_Sans } from "next/font/google";
+import { AppConfigProvider } from "@/lib/contexts/AppConfigContext";
 import "./globals.css";
 
 const outfit = Outfit({
@@ -27,7 +28,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="es" className={`${outfit.variable} ${dmSans.variable}`}>
       <body className="antialiased font-body bg-surface text-text-main">
-        {children}
+        <AppConfigProvider>{children}</AppConfigProvider>
       </body>
     </html>
   );

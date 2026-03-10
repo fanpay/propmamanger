@@ -107,3 +107,22 @@ export interface Appointment {
   notes?: string;
   createdAt: Date;
 }
+
+export interface ItineraryStop {
+  id: string;
+  time: string;
+  property: Property;
+  notes?: string;
+}
+
+export interface Itinerary {
+  id: string;
+  clientId: string;
+  client: Client;
+  date: Date;
+  generalNotes?: string;
+  stops: ItineraryStop[];
+  advisorId: string;
+  advisor: User;
+  createdAt: Date;
+}
